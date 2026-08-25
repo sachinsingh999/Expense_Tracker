@@ -51,14 +51,14 @@ const Register = () => {
   return (
     <div className="min-h-[calc(100vh-64px)] flex items-center justify-center p-6 sm:p-8 lg:p-12 bg-slate-950 text-slate-100 relative overflow-hidden">
       {/* 2-PART SPLIT CONTAINER */}
-      <div className="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-12 bg-slate-900 border border-slate-800 rounded-lg overflow-hidden shadow-2xl relative z-10">
+      <div className="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-12 bg-slate-900 border border-slate-800 rounded-md overflow-hidden shadow-2xl relative z-10">
         
-        {/* PART 1: LEFT SHOWCASE PANEL (5 Columns) */}
-        <div className="lg:col-span-5 bg-slate-900 p-8 sm:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800 relative">
+        {/* PART 1: LEFT SHOWCASE PANEL (Desktop / Tablet Only: 5 Columns) */}
+        <div className="hidden lg:flex lg:col-span-5 bg-slate-900 p-8 sm:p-12 flex-col justify-between border-r border-slate-800 relative">
           <div>
             {/* Brand Header */}
             <div className="mb-10">
-              <img src="/logo.png" alt="Finora" className="h-12 w-auto object-contain" />
+              <img src="/logo.png" alt="Finora" className="h-10 w-auto object-contain" />
             </div>
 
             {/* Headline */}
@@ -78,7 +78,7 @@ const Register = () => {
                 { title: "1-Click CSV Transactions Data Export" },
               ].map((feat, i) => (
                 <div key={i} className="flex items-center gap-3.5">
-                  <div className="w-7 h-7 rounded-md bg-emerald-500/10 border border-emerald-500 flex items-center justify-center text-emerald-400 shrink-0">
+                  <div className="w-7 h-7 rounded-md bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
                     <CheckCircle2 className="w-4 h-4" />
                   </div>
                   <span className="text-xs font-semibold text-slate-300">{feat.title}</span>
@@ -90,16 +90,22 @@ const Register = () => {
           {/* Bottom Badge */}
           <div className="mt-10 pt-6 border-t border-slate-800 flex items-center justify-between">
             <span className="text-[11px] text-slate-400 font-medium">Join 10,000+ Smart Savers</span>
-            <span className="text-[10px] font-bold text-violet-400 bg-violet-500/10 px-2.5 py-1 rounded-md border border-violet-500">
+            <span className="text-[10px] font-bold text-violet-400 bg-violet-500/10 px-2.5 py-1 rounded-md border border-violet-500/30">
               JWT Secured
             </span>
           </div>
         </div>
 
         {/* PART 2: RIGHT AUTH FORM PANEL (7 Columns) */}
-        <div className="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-center bg-slate-950">
-          <div className="mb-8 text-left">
-            <h1 className="text-2xl font-bold text-slate-100 tracking-tight mb-1.5">Create Free Account</h1>
+        <div className="lg:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-center bg-slate-950">
+          
+          {/* Mobile Logo Header */}
+          <div className="lg:hidden mb-6 flex justify-center">
+            <img src="/logo.png" alt="Finora" className="h-10 w-auto object-contain" />
+          </div>
+
+          <div className="mb-6 sm:mb-8 text-left">
+            <h1 className="text-xl sm:text-2xl font-bold text-slate-100 tracking-tight mb-1.5">Create Free Account</h1>
             <p className="text-xs sm:text-sm text-slate-400">
               Fill in your details below to get started immediately.
             </p>
