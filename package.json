@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "cd client && npm install && npm run build",
-    "start": "cd server && npm start"
+    "build": "if [ -d \"client\" ]; then cd client && npm install && npm run build; else vite build; fi"
   }
 }
