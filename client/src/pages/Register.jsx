@@ -58,7 +58,7 @@ const Register = () => {
           <div>
             {/* Brand Header */}
             <div className="mb-10">
-              <img src="/logo.jpg" alt="Finora" className="h-12 w-auto rounded-md object-contain shadow-md" />
+              <img src="/logo.png" alt="Finora" className="h-12 w-auto object-contain" />
             </div>
 
             {/* Headline */}

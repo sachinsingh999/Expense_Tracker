@@ -86,9 +86,9 @@ const Navbar = () => {
             className="flex items-center cursor-pointer group shrink-0 select-none"
           >
             <img
-              src="/logo.jpg"
+              src="/logo.png"
               alt="Finora"
-              className="h-9 w-auto rounded-md object-contain shadow-md group-hover:scale-105 transition-transform duration-200"
+              className="h-8 sm:h-9 w-auto object-contain group-hover:scale-105 transition-transform duration-200"
             />
           </div>
 
