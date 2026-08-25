@@ -13,17 +13,37 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
+// CORS Middleware Configuration
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  "https://finora-zeta-seven.vercel.app",
+].filter(Boolean);
+
 app.use(cors({
   origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps, curl, postman)
+    if (!origin) return callback(null, true);
+
     // Allow any localhost origin during development
-    if (!origin || /^http:\/\/localhost:\d+$/.test(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
+    if (/^http:\/\/localhost:\d+$/.test(origin)) {
+      return callback(null, true);
     }
+
+    // Allow all Vercel deployment previews and production (.vercel.app)
+    if (/\.vercel\.app$/.test(origin)) {
+      return callback(null, true);
+    }
+
+    // Allow explicitly defined origins
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(null, true);
   },
   credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
 app.use(express.json());
 
