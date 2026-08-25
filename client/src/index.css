@@ -145,6 +145,11 @@ body.light-theme header .text-slate-400 {
   color: #94a3b8 !important;
 }
 
+body.light-theme header .bg-slate-900 {
+  background-color: #1e293b !important;
+  box-shadow: none !important;
+}
+
 body.light-theme .bg-slate-900 {
   background-color: #ffffff !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;

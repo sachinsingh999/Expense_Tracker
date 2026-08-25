@@ -105,18 +105,18 @@ const Navbar = () => {
                     to={link.to}
                     className={`relative flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
                       isActive
-                        ? "text-slate-100 font-bold"
-                        : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/60"
+                        ? "text-white font-bold"
+                        : "text-slate-300 hover:text-white hover:bg-slate-800/60"
                     }`}
                   >
                     {isActive && (
                       <motion.div
                         layoutId="activeNavTab"
-                        className="absolute inset-0 bg-violet-600/20 rounded-md"
+                        className="absolute inset-0 bg-violet-600 rounded-md shadow-sm"
                         transition={{ type: "spring", stiffness: 400, damping: 30 }}
                       />
                     )}
-                    <Icon className={`w-3.5 h-3.5 relative z-10 shrink-0 ${isActive ? "text-violet-400" : "text-slate-400"}`} />
+                    <Icon className={`w-3.5 h-3.5 relative z-10 shrink-0 ${isActive ? "text-white" : "text-violet-400"}`} />
                     <span className="relative z-10 whitespace-nowrap">{link.label}</span>
                   </NavLink>
                 );
