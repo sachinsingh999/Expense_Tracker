@@ -187,6 +187,26 @@ body.light-theme .input-field::placeholder {
 body.light-theme .border-slate-800,
 body.light-theme .border-slate-800\/40,
 body.light-theme .border-slate-800\/50,
+body.light-theme .border-slate-800\/80,
 body.light-theme .border-slate-900 {
   border-color: #e2e8f0 !important;
+}
+
+/* ─── LANDING PAGE LIGHT MODE REFINEMENTS ────────────────────────── */
+body.light-theme .from-violet-400.via-indigo-300.to-emerald-400 {
+  background-image: linear-gradient(to right, #6d28d9, #4338ca, #059669) !important;
+}
+
+body.light-theme .bg-slate-950\/85,
+body.light-theme .bg-slate-950\/90,
+body.light-theme .bg-slate-950\/80 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08) !important;
+}
+
+body.light-theme .bg-slate-900\/40,
+body.light-theme .bg-slate-900\/50,
+body.light-theme .bg-slate-900\/80 {
+  background-color: #f8fafc !important;
 }
