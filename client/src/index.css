@@ -131,6 +131,12 @@ body.light-theme .bg-slate-950 {
   color: #0f172a !important;
 }
 
+body.light-theme .brand-logo-container {
+  background-color: #0f172a !important;
+  border-color: rgba(124, 58, 237, 0.4) !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15) !important;
+}
+
 body.light-theme header {
   background-color: rgba(15, 23, 42, 0.95) !important;
   border-bottom: 1px solid rgba(30, 41, 59, 0.5) !important;

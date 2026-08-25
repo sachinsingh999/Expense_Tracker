@@ -48,7 +48,7 @@ const Login = () => {
           <div>
             {/* Brand Header */}
             <div className="mb-10">
-              <div className="brand-logo-container inline-flex p-2 sm:p-2.5 rounded-md bg-slate-900 border border-slate-800/80 shadow-md">
+              <div className="brand-logo-container inline-flex p-2 sm:p-2.5 rounded-md bg-[#0f172a] border border-violet-500/30 shadow-md">
                 <img src="/logo.png" alt="Finora" className="h-9 w-auto object-contain" />
               </div>
             </div>
@@ -96,7 +96,7 @@ const Login = () => {
           
           {/* Mobile Logo Header */}
           <div className="lg:hidden mb-6 flex justify-center">
-            <div className="brand-logo-container inline-flex p-2 rounded-md bg-slate-900 border border-slate-800/80 shadow-md">
+            <div className="brand-logo-container inline-flex p-2 rounded-md bg-[#0f172a] border border-violet-500/30 shadow-md">
               <img src="/logo.png" alt="Finora" className="h-8 w-auto object-contain" />
             </div>
           </div>
