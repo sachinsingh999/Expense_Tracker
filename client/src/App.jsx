@@ -14,6 +14,7 @@ import AddExpense from "./pages/AddExpense";
 import MyExpense from "./pages/MyExpense";
 import Income from "./pages/Income";
 import Analytics from "./pages/Analytics";
+import Goals from "./pages/Goals";
 import Settings from "./pages/Settings";
 
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/my-expenses" element={<ProtectedRoute><MyExpense /></ProtectedRoute>} />
         <Route path="/income" element={<ProtectedRoute><Income /></ProtectedRoute>} />
         <Route path="/analytics" element={<ProtectedRoute><Analytics /></ProtectedRoute>} />
+        <Route path="/goals" element={<ProtectedRoute><Goals /></ProtectedRoute>} />
         <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
 
         {/* 404 */}

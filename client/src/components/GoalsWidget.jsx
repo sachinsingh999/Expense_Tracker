@@ -2,8 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import { showToast } from "./Toast";
-
-const API = "http://localhost:4000/api";
+import { API_URL as API } from "../config";
 
 const GOAL_ICONS = ["🎯", "🏠", "✈️", "🎓", "🚗", "💍", "🏖️", "💻", "📱", "🎮", "💪", "🌟"];
 const GOAL_COLORS = [

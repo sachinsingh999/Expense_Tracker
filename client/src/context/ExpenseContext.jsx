@@ -1,10 +1,9 @@
 import { createContext, useContext, useState, useCallback } from "react";
 import axios from "axios";
 import { useAuth } from "./AuthContext";
+import { API_URL as API } from "../config";
 
 const ExpenseContext = createContext();
-
-const API = "http://localhost:4000/api";
 
 export const ExpenseProvider = ({ children }) => {
   const { token } = useAuth();

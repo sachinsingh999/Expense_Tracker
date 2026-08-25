@@ -3,6 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import { showToast } from "../components/Toast";
+import { API_URL } from "../config";
+import { Wallet, Sparkles, CheckCircle2, ShieldCheck, ArrowRight, Eye, EyeOff } from "lucide-react";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -10,7 +12,6 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [showPass, setShowPass] = useState(false);
@@ -19,16 +20,13 @@ const Register = () => {
     e.preventDefault();
     setError("");
 
-    if (password !== confirmPassword) {
-      return setError("Passwords do not match");
-    }
     if (password.length < 6) {
       return setError("Password must be at least 6 characters");
     }
 
     setLoading(true);
     try {
-      const { data } = await axios.post("http://localhost:4000/api/auth/register", {
+      const { data } = await axios.post(`${API_URL}/auth/register`, {
         name,
         email,
         password,
@@ -47,181 +45,165 @@ const Register = () => {
   };
 
   const strength = password.length === 0 ? 0 : password.length < 6 ? 1 : password.length < 10 ? 2 : 3;
-  const strengthColors = ["transparent", "#ef4444", "#f59e0b", "#10b981"];
+  const strengthColors = ["bg-transparent", "bg-rose-500", "bg-amber-500", "bg-emerald-400"];
   const strengthLabels = ["", "Weak", "Fair", "Strong"];
 
   return (
-    <div style={{
-      minHeight: "100vh",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      padding: "24px",
-      background: "var(--bg-primary)",
-      position: "relative",
-      overflow: "hidden",
-    }}>
-      <div style={{
-        position: "absolute", top: "50%", left: "50%",
-        transform: "translate(-50%, -50%)",
-        width: 500, height: 500,
-        background: "radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)",
-        pointerEvents: "none",
-      }} />
+    <div className="min-h-[calc(100vh-64px)] flex items-center justify-center p-6 sm:p-8 lg:p-12 bg-slate-950 text-slate-100 relative overflow-hidden">
+      {/* 2-PART SPLIT CONTAINER */}
+      <div className="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-12 bg-slate-900 border border-slate-800 rounded-lg overflow-hidden shadow-2xl relative z-10">
+        
+        {/* PART 1: LEFT SHOWCASE PANEL (5 Columns) */}
+        <div className="lg:col-span-5 bg-slate-900 p-8 sm:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800 relative">
+          <div>
+            {/* Brand Header */}
+            <div className="flex items-center gap-3 mb-10">
+              <div className="w-10 h-10 rounded-md bg-violet-600 flex items-center justify-center text-white shadow-md shadow-violet-600/20 border border-violet-500">
+                <Sparkles className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="font-extrabold text-lg text-slate-100 tracking-tight flex items-center gap-1">
+                  Expense<span className="text-violet-400">Pro</span>
+                </span>
+                <span className="text-[10px] font-mono text-slate-400 block tracking-wider">FREE REGISTRATION</span>
+              </div>
+            </div>
 
-      <div style={{
-        width: "100%",
-        maxWidth: 460,
-        background: "rgba(255,255,255,0.04)",
-        border: "1px solid var(--border-color)",
-        borderRadius: 24,
-        padding: "40px 36px",
-        backdropFilter: "blur(20px)",
-        animation: "fadeInUp 0.5s ease",
-        position: "relative",
-      }}>
-        <div style={{ textAlign: "center", marginBottom: 32 }}>
-          <div style={{
-            width: 56, height: 56,
-            background: "linear-gradient(135deg, var(--accent), #6366f1)",
-            borderRadius: 14,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: "1.5rem", margin: "0 auto 16px",
-            boxShadow: "0 8px 24px var(--accent-glow)",
-          }}>
-            ✨
+            {/* Headline */}
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight leading-tight mb-5">
+              Start Your Financial Freedom Journey.
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mb-10">
+              Create a free account in 30 seconds to track every rupee, analyze income, and achieve your budget goals.
+            </p>
+
+            {/* Feature Highlights */}
+            <div className="flex flex-col gap-4">
+              {[
+                { title: "Free Forever • No Credit Card Required" },
+                { title: "Instant Setup & Automated Metrics" },
+                { title: "Custom Category Budget Caps & Progress Bars" },
+                { title: "1-Click CSV Transactions Data Export" },
+              ].map((feat, i) => (
+                <div key={i} className="flex items-center gap-3.5">
+                  <div className="w-7 h-7 rounded-md bg-emerald-500/10 border border-emerald-500 flex items-center justify-center text-emerald-400 shrink-0">
+                    <CheckCircle2 className="w-4 h-4" />
+                  </div>
+                  <span className="text-xs font-semibold text-slate-300">{feat.title}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <h1 style={{ fontSize: "1.75rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: 6 }}>
-            Create Account
-          </h1>
-          <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
-            Start tracking your expenses for free
+
+          {/* Bottom Badge */}
+          <div className="mt-10 pt-6 border-t border-slate-800 flex items-center justify-between">
+            <span className="text-[11px] text-slate-400 font-medium">Join 10,000+ Smart Savers</span>
+            <span className="text-[10px] font-bold text-violet-400 bg-violet-500/10 px-2.5 py-1 rounded-md border border-violet-500">
+              JWT Secured
+            </span>
+          </div>
+        </div>
+
+        {/* PART 2: RIGHT AUTH FORM PANEL (7 Columns) */}
+        <div className="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-center bg-slate-950">
+          <div className="mb-8 text-left">
+            <h1 className="text-2xl font-bold text-slate-100 tracking-tight mb-1.5">Create Free Account</h1>
+            <p className="text-xs sm:text-sm text-slate-400">
+              Fill in your details below to get started immediately.
+            </p>
+          </div>
+
+          {/* Error Banner */}
+          {error && (
+            <div className="p-4 rounded-md bg-rose-500/10 border border-rose-500 text-rose-400 text-xs font-medium mb-6 flex items-center gap-2">
+              <span>⚠️ {error}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5 text-left">
+            <div>
+              <label className="form-label">Full Name</label>
+              <input
+                type="text"
+                className="input-field"
+                placeholder="John Doe"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
+
+            <div>
+              <label className="form-label">Email Address</label>
+              <input
+                type="email"
+                className="input-field"
+                placeholder="name@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            <div>
+              <label className="form-label">Password</label>
+              <div className="relative">
+                <input
+                  type={showPass ? "text" : "password"}
+                  className="input-field pr-10"
+                  placeholder="Min. 6 characters"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPass(!showPass)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200 transition-colors p-1 cursor-pointer"
+                >
+                  {showPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
+
+              {/* Password strength indicator */}
+              {password.length > 0 && (
+                <div className="mt-2.5 flex items-center gap-2">
+                  <div className="flex-1 h-1.5 bg-slate-800 rounded-sm overflow-hidden">
+                    <div
+                      className={`h-full transition-all duration-300 ${strengthColors[strength]}`}
+                      style={{ width: `${(strength / 3) * 100}%` }}
+                    />
+                  </div>
+                  <span className="text-[10px] font-bold text-slate-400">{strengthLabels[strength]}</span>
+                </div>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-4 px-6 rounded-md bg-violet-600 hover:bg-violet-500 text-white font-bold text-sm shadow-md border border-violet-500 transition-all flex items-center justify-center gap-2 cursor-pointer mt-2"
+            >
+              {loading ? (
+                <span>Creating Account...</span>
+              ) : (
+                <>
+                  <span>Create Free Account</span>
+                  <ArrowRight className="w-4 h-4" />
+                </>
+              )}
+            </button>
+          </form>
+
+          <p className="text-center text-xs text-slate-400 mt-8">
+            Already have an account?{" "}
+            <Link to="/login" className="text-violet-400 font-semibold hover:underline">
+              Sign in
+            </Link>
           </p>
         </div>
 
-        {error && (
-          <div style={{
-            background: "var(--red-light)",
-            border: "1px solid rgba(239,68,68,0.2)",
-            borderRadius: 10, padding: "12px 16px", marginBottom: 20,
-            color: "var(--red)", fontSize: "0.875rem",
-            display: "flex", alignItems: "center", gap: 8,
-          }}>
-            ⚠️ {error}
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-          <div>
-            <label className="form-label">Full Name</label>
-            <input
-              type="text"
-              className="input-field"
-              placeholder="John Doe"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
-
-          <div>
-            <label className="form-label">Email Address</label>
-            <input
-              type="email"
-              className="input-field"
-              placeholder="you@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-
-          <div>
-            <label className="form-label">Password</label>
-            <div style={{ position: "relative" }}>
-              <input
-                type={showPass ? "text" : "password"}
-                className="input-field"
-                placeholder="Min. 6 characters"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                style={{ paddingRight: 44 }}
-              />
-              <button
-                type="button"
-                onClick={() => setShowPass(!showPass)}
-                style={{
-                  position: "absolute", right: 12, top: "50%",
-                  transform: "translateY(-50%)",
-                  background: "none", border: "none",
-                  cursor: "pointer", color: "var(--text-muted)", fontSize: "1rem",
-                }}
-              >
-                {showPass ? "🙈" : "👁️"}
-              </button>
-            </div>
-            {/* Password strength */}
-            {password.length > 0 && (
-              <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 8 }}>
-                <div style={{ flex: 1, height: 4, background: "var(--border-color)", borderRadius: 2, overflow: "hidden" }}>
-                  <div style={{
-                    width: `${(strength / 3) * 100}%`,
-                    height: "100%",
-                    background: strengthColors[strength],
-                    borderRadius: 2,
-                    transition: "all 0.3s ease",
-                  }} />
-                </div>
-                <span style={{ fontSize: "0.75rem", color: strengthColors[strength] }}>
-                  {strengthLabels[strength]}
-                </span>
-              </div>
-            )}
-          </div>
-
-          <div>
-            <label className="form-label">Confirm Password</label>
-            <input
-              type="password"
-              className="input-field"
-              placeholder="Repeat password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              style={{
-                borderColor: confirmPassword && confirmPassword !== password ? "var(--red)" : undefined,
-              }}
-            />
-            {confirmPassword && confirmPassword !== password && (
-              <p style={{ color: "var(--red)", fontSize: "0.75rem", marginTop: 4 }}>Passwords don't match</p>
-            )}
-          </div>
-
-          <button
-            type="submit"
-            className="btn-primary"
-            disabled={loading}
-            style={{ width: "100%", padding: "13px", fontSize: "0.95rem", marginTop: 4 }}
-          >
-            {loading ? (
-              <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-                <span style={{ width: 16, height: 16, border: "2px solid rgba(255,255,255,0.3)", borderTopColor: "white", borderRadius: "50%", animation: "spin 0.7s linear infinite", display: "inline-block" }} />
-                Creating account...
-              </span>
-            ) : "Create Account →"}
-          </button>
-        </form>
-
-        <p style={{ textAlign: "center", marginTop: 24, color: "var(--text-muted)", fontSize: "0.875rem" }}>
-          Already have an account?{" "}
-          <Link to="/login" style={{ color: "var(--accent-light)", fontWeight: 600, textDecoration: "none" }}>
-            Sign in
-          </Link>
-        </p>
       </div>
-
-      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </div>
   );
 };
