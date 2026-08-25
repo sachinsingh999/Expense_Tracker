@@ -83,12 +83,12 @@ const Navbar = () => {
           {/* BRAND LOGO */}
           <div
             onClick={() => navigate(user ? "/dashboard" : "/")}
-            className="brand-logo-container flex items-center cursor-pointer group shrink-0 select-none bg-slate-900 px-3 py-1.5 rounded-md shadow-md transition-all border border-violet-500/20 hover:border-violet-500/40"
+            className="flex items-center cursor-pointer group shrink-0 select-none"
           >
             <img
               src="/logo.png"
               alt="Finora"
-              className="h-6 sm:h-7 w-auto object-contain group-hover:scale-105 transition-transform duration-200"
+              className="h-8 sm:h-9 w-auto object-contain group-hover:scale-105 transition-transform duration-200"
             />
           </div>
 
