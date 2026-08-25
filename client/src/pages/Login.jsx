@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 import { showToast } from "../components/Toast";
 import { API_URL } from "../config";
 import { Wallet, TrendingUp, PieChart, ShieldCheck, Zap, ArrowRight, Eye, EyeOff } from "lucide-react";
@@ -9,6 +10,7 @@ import { Wallet, TrendingUp, PieChart, ShieldCheck, Zap, ArrowRight, Eye, EyeOff
 const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
+  const { isDark } = useTheme();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -48,9 +50,7 @@ const Login = () => {
           <div>
             {/* Brand Header */}
             <div className="mb-10">
-              <div className="brand-logo-container inline-flex p-2 sm:p-2.5 rounded-md bg-[#0f172a] border border-violet-500/30 shadow-md">
-                <img src="/logo.png" alt="Finora" className="h-9 w-auto object-contain" />
-              </div>
+              <img src={isDark ? "/logo.png" : "/logo-dark.png"} alt="Finora" className="h-10 w-auto object-contain" />
             </div>
 
             {/* Headline */}
@@ -96,9 +96,7 @@ const Login = () => {
           
           {/* Mobile Logo Header */}
           <div className="lg:hidden mb-6 flex justify-center">
-            <div className="brand-logo-container inline-flex p-2 rounded-md bg-[#0f172a] border border-violet-500/30 shadow-md">
-              <img src="/logo.png" alt="Finora" className="h-8 w-auto object-contain" />
-            </div>
+            <img src={isDark ? "/logo.png" : "/logo-dark.png"} alt="Finora" className="h-9 w-auto object-contain" />
           </div>
 
           <div className="mb-6 sm:mb-8 text-left">
