@@ -131,23 +131,27 @@ body.light-theme .bg-slate-950 {
   color: #0f172a !important;
 }
 
+/* ─── PERMANENT DARK NAVBAR HEADER (UNTOUCHED IN LIGHT MODE) ────────── */
 body.light-theme header {
   background-color: rgba(15, 23, 42, 0.95) !important;
-  border-bottom: 1px solid rgba(30, 41, 59, 0.5) !important;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.6) !important;
+  color: #f8fafc !important;
 }
 
-body.light-theme header .text-slate-100 {
+body.light-theme header .bg-slate-900 {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+  box-shadow: none !important;
+}
+
+body.light-theme header .text-slate-100,
+body.light-theme header .text-slate-200 {
   color: #f8fafc !important;
 }
 
 body.light-theme header .text-slate-300,
 body.light-theme header .text-slate-400 {
   color: #94a3b8 !important;
-}
-
-body.light-theme header .bg-slate-900 {
-  background-color: #1e293b !important;
-  box-shadow: none !important;
 }
 
 body.light-theme .bg-slate-900 {
