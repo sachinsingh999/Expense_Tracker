@@ -83,18 +83,13 @@ const Navbar = () => {
           {/* BRAND LOGO */}
           <div
             onClick={() => navigate(user ? "/dashboard" : "/")}
-            className="flex items-center gap-2.5 cursor-pointer group shrink-0 select-none"
+            className="flex items-center cursor-pointer group shrink-0 select-none"
           >
             <img
               src="/logo.jpg"
-              alt="Finora Logo"
-              className="w-8 h-8 rounded-md object-cover shadow-md group-hover:scale-105 transition-transform duration-200"
+              alt="Finora"
+              className="h-9 w-auto rounded-md object-contain shadow-md group-hover:scale-105 transition-transform duration-200"
             />
-            <div className="flex items-center gap-1.5">
-              <span className="font-black text-base tracking-tight text-slate-100 flex items-center">
-                Fin<span className="text-violet-400">ora</span>
-              </span>
-            </div>
           </div>
 
           {/* DESKTOP NAVIGATION LINKS */}

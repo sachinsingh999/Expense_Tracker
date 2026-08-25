@@ -57,14 +57,8 @@ const Register = () => {
         <div className="lg:col-span-5 bg-slate-900 p-8 sm:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800 relative">
           <div>
             {/* Brand Header */}
-            <div className="flex items-center gap-3 mb-10">
-              <img src="/logo.jpg" alt="Finora" className="w-10 h-10 rounded-md object-cover shadow-md" />
-              <div>
-                <span className="font-black text-lg text-slate-100 tracking-tight flex items-center gap-1">
-                  Fin<span className="text-violet-400">ora</span>
-                </span>
-                <span className="text-[10px] font-medium text-slate-400 block tracking-wider uppercase">Your finances, simplified.</span>
-              </div>
+            <div className="mb-10">
+              <img src="/logo.jpg" alt="Finora" className="h-12 w-auto rounded-md object-contain shadow-md" />
             </div>
 
             {/* Headline */}
