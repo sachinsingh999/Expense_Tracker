@@ -160,45 +160,45 @@ export const SavingsCalculator = () => {
 
           {/* Results Display Side (6 Cols) */}
           <div className="lg:col-span-6 flex flex-col gap-6">
-            <div className="p-8 rounded-lg bg-gradient-to-br from-violet-950/60 via-slate-900 to-slate-950 border border-violet-500/30 flex flex-col gap-6 shadow-xl relative overflow-hidden">
+            <div className="p-8 rounded-lg bg-gradient-to-br from-slate-900 via-violet-950 to-slate-950 border border-violet-500/40 flex flex-col gap-6 shadow-xl relative overflow-hidden dark-results-card text-white">
               <div className="absolute top-0 right-0 p-6 opacity-10 pointer-events-none">
                 <Sparkles className="w-32 h-32 text-violet-400" />
               </div>
 
               <div>
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Monthly Savings Potential</span>
-                <div className="text-4xl sm:text-5xl font-black text-slate-100 mt-1">
+                <span className="text-xs font-bold text-slate-300 uppercase tracking-wider block mb-1">Monthly Savings Potential</span>
+                <div className="text-4xl sm:text-5xl font-black text-white">
                   ₹{monthlySavings.toLocaleString("en-IN")}
-                  <span className="text-xs font-normal text-slate-400 ml-2">/ month</span>
+                  <span className="text-xs font-normal text-slate-300 ml-2">/ month</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-800">
-                <div className="p-4 rounded-md bg-slate-900/60 border border-slate-800 flex flex-col">
-                  <span className="text-xs text-slate-400 font-medium">1-Year Savings</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-700/60">
+                <div className="p-4 rounded-md bg-slate-900/90 border border-slate-700/60 flex flex-col">
+                  <span className="text-xs text-slate-300 font-medium">1-Year Savings</span>
                   <span className="text-2xl font-bold text-emerald-400 mt-1">
                     ₹{yearlySavings.toLocaleString("en-IN")}
                   </span>
                 </div>
 
-                <div className="p-4 rounded-md bg-slate-900/60 border border-slate-800 flex flex-col">
-                  <span className="text-xs text-slate-400 font-medium">5-Year Growth (10% CAGR)</span>
-                  <span className="text-2xl font-bold text-violet-400 mt-1">
+                <div className="p-4 rounded-md bg-slate-900/90 border border-slate-700/60 flex flex-col">
+                  <span className="text-xs text-slate-300 font-medium">5-Year Growth (10% CAGR)</span>
+                  <span className="text-2xl font-bold text-violet-300 mt-1">
                     ₹{fiveYearProjections.toLocaleString("en-IN")}
                   </span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 p-3.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-xs text-slate-300">
+              <div className="flex items-center gap-3 p-3.5 rounded-md bg-emerald-500/15 border border-emerald-500/30 text-xs text-emerald-100">
                 <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0" />
-                <span>
-                  Tracking your expenses with Finora helps users save an average of <strong className="text-emerald-400">18% more</strong> each month.
+                <span className="text-slate-200">
+                  Tracking your expenses with Finora helps users save an average of <strong className="text-emerald-300 font-bold">18% more</strong> each month.
                 </span>
               </div>
 
               <button
                 onClick={() => navigate("/register")}
-                className="w-full py-4 px-6 rounded-md bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-violet-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer mt-2 border border-violet-400/30"
+                className="w-full py-4 px-6 rounded-md bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-extrabold text-sm shadow-lg shadow-violet-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer border border-violet-400/30 transform hover:-translate-y-0.5"
               >
                 <span>Start Saving Now Free</span>
                 <ArrowRight className="w-4 h-4" />

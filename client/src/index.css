@@ -290,3 +290,25 @@ body.light-theme header.navbar-dark-locked .hover\:text-slate-200:hover,
 body.light-theme header.navbar-dark-locked .hover\:text-slate-100:hover {
   color: #ffffff !important;
 }
+
+/* ─── PERMANENT DARK CARDS IMMUNITY (SAVINGS CALCULATOR & HERO MOCKUP) ─ */
+.dark-results-card,
+body.light-theme .dark-results-card {
+  background-image: linear-gradient(to bottom right, #0f172a, #2e1065, #0b0f19) !important;
+  color: #ffffff !important;
+}
+
+.dark-results-card .text-white,
+body.light-theme .dark-results-card .text-white {
+  color: #ffffff !important;
+}
+
+.dark-results-card .text-slate-300,
+body.light-theme .dark-results-card .text-slate-300 {
+  color: #cbd5e1 !important;
+}
+
+.dark-results-card .text-slate-200,
+body.light-theme .dark-results-card .text-slate-200 {
+  color: #e2e8f0 !important;
+}
