@@ -231,9 +231,9 @@ export const ExpenseSimulator = () => {
                 <span className="text-xs font-semibold text-slate-400 mb-1">Total Net Balance</span>
                 <motion.span
                   key={netBalance}
-                  initial={{ scale: 1.1, color: "#a78bfa" }}
-                  animate={{ scale: 1, color: netBalance >= 0 ? "#f8fafc" : "#f43f5e" }}
-                  className="text-2xl font-extrabold"
+                  initial={{ scale: 1.1 }}
+                  animate={{ scale: 1 }}
+                  className={`text-2xl font-extrabold ${netBalance >= 0 ? "text-slate-100" : "text-rose-500"}`}
                 >
                   ₹{netBalance.toLocaleString("en-IN")}
                 </motion.span>

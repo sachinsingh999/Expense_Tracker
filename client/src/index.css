@@ -192,22 +192,28 @@ body.light-theme .from-violet-950\/80.via-slate-900.to-indigo-950\/80 p {
   color: #ffffff !important;
 }
 
+body.light-theme .bg-slate-950,
+body.light-theme .bg-slate-950\/60,
+body.light-theme .bg-slate-950\/70,
+body.light-theme .bg-slate-950\/80,
 body.light-theme .bg-slate-950\/85,
 body.light-theme .bg-slate-950\/90,
-body.light-theme .bg-slate-950\/80,
-body.light-theme .bg-slate-950\/70 {
+body.light-theme .bg-slate-950\/98 {
   background-color: #f1f5f9 !important;
+  color: #0f172a !important;
 }
 
+body.light-theme .bg-slate-900,
+body.light-theme .bg-slate-900\/30,
 body.light-theme .bg-slate-900\/40,
 body.light-theme .bg-slate-900\/50,
 body.light-theme .bg-slate-900\/60,
 body.light-theme .bg-slate-900\/80,
-body.light-theme .bg-slate-900\/90,
-body.light-theme .bg-slate-900\/30 {
+body.light-theme .bg-slate-900\/90 {
   background-color: #ffffff !important;
+  color: #0f172a !important;
   border-color: #e2e8f0 !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
 }
 
 body.light-theme footer {
