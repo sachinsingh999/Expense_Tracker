@@ -178,17 +178,40 @@ body.light-theme .from-violet-400.via-indigo-300.to-emerald-400 {
   background-image: linear-gradient(to right, #6d28d9, #4338ca, #059669) !important;
 }
 
+body.light-theme .from-violet-400.to-indigo-400 {
+  background-image: linear-gradient(to right, #6d28d9, #4338ca) !important;
+}
+
+body.light-theme .from-violet-950\/80.via-slate-900.to-indigo-950\/80 {
+  background-image: linear-gradient(to top right, #6d28d9, #4f46e5, #4338ca) !important;
+  color: #ffffff !important;
+}
+
+body.light-theme .from-violet-950\/80.via-slate-900.to-indigo-950\/80 h2,
+body.light-theme .from-violet-950\/80.via-slate-900.to-indigo-950\/80 p {
+  color: #ffffff !important;
+}
+
 body.light-theme .bg-slate-950\/85,
 body.light-theme .bg-slate-950\/90,
-body.light-theme .bg-slate-950\/80 {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  border-color: #e2e8f0 !important;
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08) !important;
+body.light-theme .bg-slate-950\/80,
+body.light-theme .bg-slate-950\/70 {
+  background-color: #f1f5f9 !important;
 }
 
 body.light-theme .bg-slate-900\/40,
 body.light-theme .bg-slate-900\/50,
-body.light-theme .bg-slate-900\/80 {
+body.light-theme .bg-slate-900\/60,
+body.light-theme .bg-slate-900\/80,
+body.light-theme .bg-slate-900\/90,
+body.light-theme .bg-slate-900\/30 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+}
+
+body.light-theme footer {
+  border-color: #e2e8f0 !important;
   background-color: #f8fafc !important;
 }
 
