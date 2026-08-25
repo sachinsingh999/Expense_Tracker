@@ -48,14 +48,12 @@ const Login = () => {
           <div>
             {/* Brand Header */}
             <div className="flex items-center gap-3 mb-10">
-              <div className="w-10 h-10 rounded-md bg-violet-600 flex items-center justify-center text-white shadow-md shadow-violet-600/20 border border-violet-500">
-                <Wallet className="w-5 h-5" />
-              </div>
+              <img src="/logo.jpg" alt="Finora" className="w-10 h-10 rounded-md object-cover shadow-md" />
               <div>
-                <span className="font-extrabold text-lg text-slate-100 tracking-tight flex items-center gap-1">
-                  Expense<span className="text-violet-400">Pro</span>
+                <span className="font-black text-lg text-slate-100 tracking-tight flex items-center gap-1">
+                  Fin<span className="text-violet-400">ora</span>
                 </span>
-                <span className="text-[10px] font-mono text-slate-400 block tracking-wider">AI FINANCIAL SUITE</span>
+                <span className="text-[10px] font-medium text-slate-400 block tracking-wider uppercase">Your finances, simplified.</span>
               </div>
             </div>
 

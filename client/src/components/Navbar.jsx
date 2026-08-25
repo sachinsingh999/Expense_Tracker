@@ -85,9 +85,11 @@ const Navbar = () => {
             onClick={() => navigate(user ? "/dashboard" : "/")}
             className="flex items-center gap-2.5 cursor-pointer group shrink-0 select-none"
           >
-            <div className="w-8 h-8 rounded-md bg-violet-600 flex items-center justify-center text-white shadow-md shadow-violet-600/30 group-hover:bg-violet-500 transition-all duration-200">
-              <TrendingUp className="w-4 h-4 text-white font-extrabold" />
-            </div>
+            <img
+              src="/logo.jpg"
+              alt="Finora Logo"
+              className="w-8 h-8 rounded-md object-cover shadow-md group-hover:scale-105 transition-transform duration-200"
+            />
             <div className="flex items-center gap-1.5">
               <span className="font-black text-base tracking-tight text-slate-100 flex items-center">
                 Fin<span className="text-violet-400">ora</span>
