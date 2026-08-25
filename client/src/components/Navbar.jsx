@@ -83,7 +83,7 @@ const Navbar = () => {
           {/* BRAND LOGO */}
           <div
             onClick={() => navigate(user ? "/dashboard" : "/")}
-            className="brand-logo-container flex items-center cursor-pointer group shrink-0 select-none bg-slate-950 px-3 py-1.5 rounded-md shadow-md transition-all border border-slate-800/80"
+            className="brand-logo-container flex items-center cursor-pointer group shrink-0 select-none bg-slate-900 px-3 py-1.5 rounded-md shadow-md transition-all border border-violet-500/20 hover:border-violet-500/40"
           >
             <img
               src="/logo.png"
