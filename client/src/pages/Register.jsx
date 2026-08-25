@@ -58,7 +58,9 @@ const Register = () => {
           <div>
             {/* Brand Header */}
             <div className="mb-10">
-              <img src="/logo.png" alt="Finora" className="h-10 w-auto object-contain" />
+              <div className="brand-logo-container inline-flex p-2 sm:p-2.5 rounded-md bg-slate-900 border border-slate-800/80 shadow-md">
+                <img src="/logo.png" alt="Finora" className="h-9 w-auto object-contain" />
+              </div>
             </div>
 
             {/* Headline */}
@@ -101,7 +103,9 @@ const Register = () => {
           
           {/* Mobile Logo Header */}
           <div className="lg:hidden mb-6 flex justify-center">
-            <img src="/logo.png" alt="Finora" className="h-10 w-auto object-contain" />
+            <div className="brand-logo-container inline-flex p-2 rounded-md bg-slate-900 border border-slate-800/80 shadow-md">
+              <img src="/logo.png" alt="Finora" className="h-8 w-auto object-contain" />
+            </div>
           </div>
 
           <div className="mb-6 sm:mb-8 text-left">
