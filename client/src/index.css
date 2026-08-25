@@ -212,23 +212,52 @@ body.light-theme header .bg-slate-950 {
   background-color: #0b0f19 !important;
 }
 
-body.light-theme header .text-slate-100,
-body.light-theme header .text-slate-200 {
+/* ─── PERMANENT UNTOUCHABLE DARK NAVBAR (100% IMMUNE TO THEME CHANGES) ─── */
+header.navbar-dark-locked,
+body.light-theme header.navbar-dark-locked {
+  background-color: #0b0f19 !important;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.6) !important;
   color: #f8fafc !important;
 }
 
-body.light-theme header .text-slate-300,
-body.light-theme header .text-slate-400 {
+header.navbar-dark-locked .bg-slate-900,
+body.light-theme header.navbar-dark-locked .bg-slate-900 {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+  box-shadow: none !important;
+}
+
+header.navbar-dark-locked .bg-slate-950,
+body.light-theme header.navbar-dark-locked .bg-slate-950 {
+  background-color: #0b0f19 !important;
+}
+
+header.navbar-dark-locked .text-slate-100,
+header.navbar-dark-locked .text-slate-200,
+body.light-theme header.navbar-dark-locked .text-slate-100,
+body.light-theme header.navbar-dark-locked .text-slate-200 {
+  color: #f8fafc !important;
+}
+
+header.navbar-dark-locked .text-slate-300,
+header.navbar-dark-locked .text-slate-400,
+body.light-theme header.navbar-dark-locked .text-slate-300,
+body.light-theme header.navbar-dark-locked .text-slate-400 {
   color: #94a3b8 !important;
 }
 
-body.light-theme header .hover\:bg-slate-800:hover,
-body.light-theme header .hover\:bg-slate-800\/60:hover {
-  background-color: rgba(30, 41, 59, 0.6) !important;
+header.navbar-dark-locked .hover\:bg-slate-800:hover,
+header.navbar-dark-locked .hover\:bg-slate-800\/60:hover,
+body.light-theme header.navbar-dark-locked .hover\:bg-slate-800:hover,
+body.light-theme header.navbar-dark-locked .hover\:bg-slate-800\/60:hover {
+  background-color: rgba(30, 41, 59, 0.7) !important;
 }
 
-body.light-theme header .hover\:text-white:hover,
-body.light-theme header .hover\:text-slate-200:hover,
-body.light-theme header .hover\:text-slate-100:hover {
+header.navbar-dark-locked .hover\:text-white:hover,
+header.navbar-dark-locked .hover\:text-slate-200:hover,
+header.navbar-dark-locked .hover\:text-slate-100:hover,
+body.light-theme header.navbar-dark-locked .hover\:text-white:hover,
+body.light-theme header.navbar-dark-locked .hover\:text-slate-200:hover,
+body.light-theme header.navbar-dark-locked .hover\:text-slate-100:hover {
   color: #ffffff !important;
 }
