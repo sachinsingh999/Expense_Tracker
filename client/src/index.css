@@ -131,29 +131,6 @@ body.light-theme .bg-slate-950 {
   color: #0f172a !important;
 }
 
-/* ─── PERMANENT DARK NAVBAR HEADER (UNTOUCHED IN LIGHT MODE) ────────── */
-body.light-theme header {
-  background-color: rgba(15, 23, 42, 0.95) !important;
-  border-bottom: 1px solid rgba(30, 41, 59, 0.6) !important;
-  color: #f8fafc !important;
-}
-
-body.light-theme header .bg-slate-900 {
-  background-color: #0f172a !important;
-  border-color: #1e293b !important;
-  box-shadow: none !important;
-}
-
-body.light-theme header .text-slate-100,
-body.light-theme header .text-slate-200 {
-  color: #f8fafc !important;
-}
-
-body.light-theme header .text-slate-300,
-body.light-theme header .text-slate-400 {
-  color: #94a3b8 !important;
-}
-
 body.light-theme .bg-slate-900 {
   background-color: #ffffff !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
@@ -213,4 +190,45 @@ body.light-theme .bg-slate-900\/40,
 body.light-theme .bg-slate-900\/50,
 body.light-theme .bg-slate-900\/80 {
   background-color: #f8fafc !important;
+}
+
+/* ─── PERMANENT DARK NAVBAR HEADER (LOCKED AT BOTTOM OF CSS) ──────── */
+body.light-theme header {
+  background-color: rgba(15, 23, 42, 0.95) !important;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.6) !important;
+  color: #f8fafc !important;
+}
+
+body.light-theme header .bg-slate-950,
+body.light-theme header .bg-slate-950\/90,
+body.light-theme header .bg-slate-950\/98,
+body.light-theme header .bg-slate-900 {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+  box-shadow: none !important;
+}
+
+body.light-theme header .bg-slate-950 {
+  background-color: #0b0f19 !important;
+}
+
+body.light-theme header .text-slate-100,
+body.light-theme header .text-slate-200 {
+  color: #f8fafc !important;
+}
+
+body.light-theme header .text-slate-300,
+body.light-theme header .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+body.light-theme header .hover\:bg-slate-800:hover,
+body.light-theme header .hover\:bg-slate-800\/60:hover {
+  background-color: rgba(30, 41, 59, 0.6) !important;
+}
+
+body.light-theme header .hover\:text-white:hover,
+body.light-theme header .hover\:text-slate-200:hover,
+body.light-theme header .hover\:text-slate-100:hover {
+  color: #ffffff !important;
 }
