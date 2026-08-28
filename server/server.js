@@ -8,6 +8,7 @@ import authRoutes from "./routes/authRoutes.js";
 import expenseRoutes from "./routes/expenseRoutes.js";
 import incomeRoutes from "./routes/incomeRoutes.js";
 import goalRoutes from "./routes/goalRoutes.js";
+import splitExpenseRoutes from "./routes/splitExpenseRoutes.js";
 
 dotenv.config();
 
@@ -57,6 +58,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/expenses", expenseRoutes);
 app.use("/api/income", incomeRoutes);
 app.use("/api/goals", goalRoutes);
+app.use("/api/split-expenses", splitExpenseRoutes);
 
 // Start server first
 const PORT = process.env.PORT || 4000;

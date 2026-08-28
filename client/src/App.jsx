@@ -16,6 +16,7 @@ import Income from "./pages/Income";
 import Analytics from "./pages/Analytics";
 import Goals from "./pages/Goals";
 import Settings from "./pages/Settings";
+import SplitExpenses from "./pages/SplitExpenses";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
@@ -36,6 +37,10 @@ const App = () => {
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/add-expenses" element={<ProtectedRoute><AddExpense /></ProtectedRoute>} />
         <Route path="/my-expenses" element={<ProtectedRoute><MyExpense /></ProtectedRoute>} />
+        <Route path="/split-expenses" element={<ProtectedRoute><SplitExpenses /></ProtectedRoute>} />
+        <Route path="/split-expenses/add" element={<ProtectedRoute><SplitExpenses /></ProtectedRoute>} />
+        <Route path="/split-expenses/edit/:id" element={<ProtectedRoute><SplitExpenses /></ProtectedRoute>} />
+        <Route path="/split-expenses/details/:id" element={<ProtectedRoute><SplitExpenses /></ProtectedRoute>} />
         <Route path="/income" element={<ProtectedRoute><Income /></ProtectedRoute>} />
         <Route path="/analytics" element={<ProtectedRoute><Analytics /></ProtectedRoute>} />
         <Route path="/goals" element={<ProtectedRoute><Goals /></ProtectedRoute>} />

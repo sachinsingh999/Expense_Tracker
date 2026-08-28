@@ -21,7 +21,8 @@ import {
   Menu,
   X,
   ShieldCheck,
-  Zap
+  Zap,
+  Users
 } from "lucide-react";
 
 const Navbar = () => {
@@ -58,6 +59,7 @@ const Navbar = () => {
         { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
         { to: "/add-expenses", label: "Add Expense", icon: PlusCircle },
         { to: "/my-expenses", label: "Expenses", icon: ReceiptText },
+        { to: "/split-expenses", label: "Split Expense", icon: Users },
         { to: "/income", label: "Income", icon: TrendingUp },
         { to: "/analytics", label: "Analytics", icon: BarChart3 },
         { to: "/goals", label: "Goals", icon: Target },
@@ -194,6 +196,7 @@ const Navbar = () => {
                           { label: "Dashboard", route: "/dashboard", icon: LayoutDashboard },
                           { label: "Add Expense", route: "/add-expenses", icon: PlusCircle },
                           { label: "My Expenses", route: "/my-expenses", icon: ReceiptText },
+                          { label: "Split Expenses", route: "/split-expenses", icon: Users },
                           { label: "Income Tracker", route: "/income", icon: TrendingUp },
                           { label: "Analytics", route: "/analytics", icon: BarChart3 },
                           { label: "Budget Goals", route: "/goals", icon: Target },

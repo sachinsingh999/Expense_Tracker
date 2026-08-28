@@ -30,7 +30,10 @@ import {
   Package,
   ShieldCheck,
   CheckCircle2,
-  Lightbulb
+  Lightbulb,
+  Users,
+  Clock,
+  Divide,
 } from "lucide-react";
 import { useExpense } from "../context/ExpenseContext";
 import { useAuth } from "../context/AuthContext";
@@ -76,14 +79,29 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 const Dashboard = () => {
-  const { expenses, income, fetchExpenses, fetchIncome, totalExpenses, totalIncome, netSavings, monthlyExpenses } = useExpense();
+  const {
+    expenses,
+    income,
+    fetchExpenses,
+    fetchIncome,
+    totalExpenses,
+    totalIncome,
+    netSavings,
+    monthlyExpenses,
+    splitSummary,
+    fetchSplitSummary,
+    splitExpenses,
+    fetchSplitExpenses,
+  } = useExpense();
   const { user } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchExpenses();
     fetchIncome();
-  }, [fetchExpenses, fetchIncome]);
+    fetchSplitSummary();
+    fetchSplitExpenses();
+  }, [fetchExpenses, fetchIncome, fetchSplitSummary, fetchSplitExpenses]);
 
   // Category breakdown for pie chart
   const categoryData = useMemo(() => {
@@ -111,6 +129,7 @@ const Dashboard = () => {
   }, [expenses]);
 
   const recentExpenses = [...expenses].slice(0, 5);
+  const recentSharedExpenses = splitSummary?.recentSharedExpenses || [...splitExpenses].slice(0, 3);
 
   // Budget calculations
   const budget = user?.monthlyBudget || 0;
@@ -166,6 +185,13 @@ const Dashboard = () => {
 
             {/* Quick Action CTAs */}
             <div className="flex items-center gap-2.5 shrink-0 flex-wrap">
+              <button
+                onClick={() => navigate("/split-expenses")}
+                className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-3 py-2 rounded-md bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 font-bold text-xs transition-all cursor-pointer whitespace-nowrap"
+              >
+                <Users className="w-3.5 h-3.5 text-indigo-400" />
+                <span>+ Split Expense</span>
+              </button>
               <button
                 onClick={() => navigate("/income")}
                 className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-3.5 py-2 rounded-md bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 font-bold text-xs transition-all cursor-pointer whitespace-nowrap"
@@ -289,6 +315,83 @@ const Dashboard = () => {
 
           </div>
 
+        </div>
+
+        {/* SHARED EXPENSES DASHBOARD SUMMARY WIDGET */}
+        <div className="p-5 sm:p-6 rounded-md bg-slate-900 shadow-xl flex flex-col gap-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Users className="w-4 h-4 text-violet-400" />
+              <h2 className="text-sm font-bold text-slate-100">Shared Expenses & Settlements Overview</h2>
+            </div>
+
+            <button
+              onClick={() => navigate("/split-expenses")}
+              className="text-xs text-violet-400 hover:text-violet-300 font-bold flex items-center gap-1 cursor-pointer transition-colors"
+            >
+              <span>Manage Shared Expenses</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+            <div className="p-4 rounded-md bg-slate-950 flex flex-col justify-between">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">You Are Owed</span>
+              <h3 className="text-xl font-extrabold text-emerald-400 mt-1">
+                {formatCurrency(splitSummary.totalOwedToYou)}
+              </h3>
+              <p className="text-[10px] text-slate-400 mt-0.5">Others owe you in pending settlements</p>
+            </div>
+
+            <div className="p-4 rounded-md bg-slate-950 flex flex-col justify-between">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">You Owe</span>
+              <h3 className="text-xl font-extrabold text-rose-400 mt-1">
+                {formatCurrency(splitSummary.totalYouOwe)}
+              </h3>
+              <p className="text-[10px] text-slate-400 mt-0.5">You owe others in pending settlements</p>
+            </div>
+
+            <div className="p-4 rounded-md bg-slate-950 flex flex-col justify-between">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Pending Settlements</span>
+              <h3 className="text-xl font-extrabold text-amber-400 mt-1">
+                {splitSummary.pendingCount}
+              </h3>
+              <p className="text-[10px] text-slate-400 mt-0.5">Transactions requiring payment</p>
+            </div>
+          </div>
+
+          {/* RECENT SHARED EXPENSES CARDS */}
+          {recentSharedExpenses.length > 0 && (
+            <div className="pt-2 border-t border-slate-800/40 flex flex-col gap-2.5">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                Recent Shared Expenses
+              </span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {recentSharedExpenses.slice(0, 3).map((exp, i) => (
+                  <div key={exp._id || i} className="p-3.5 rounded-md bg-slate-950 flex flex-col justify-between gap-2 border border-slate-800">
+                    <div className="flex items-center justify-between">
+                      <h4 className="text-xs font-extrabold text-slate-100 truncate">{exp.description}</h4>
+                      <span className="text-xs font-black text-slate-100">{formatCurrency(exp.totalAmount)}</span>
+                    </div>
+
+                    <div className="flex items-center justify-between text-[11px] text-slate-400">
+                      <span>{exp.participants?.length || 0} people</span>
+                      <span className="truncate">
+                        {exp.payers?.map((p) => `${p.name} paid ${formatCurrency(p.amount)}`).join(", ")}
+                      </span>
+                    </div>
+
+                    <button
+                      onClick={() => navigate("/split-expenses")}
+                      className="mt-1 w-full py-1.5 rounded bg-violet-600/20 hover:bg-violet-600/30 text-violet-300 font-bold text-[11px] transition-all cursor-pointer text-center"
+                    >
+                      [View Split]
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* 2. BUDGET PROGRESS BAR (If user set budget) */}
@@ -457,7 +560,7 @@ const Dashboard = () => {
           {/* Recent Transactions List (8 Columns) */}
           <div className="lg:col-span-8 p-5 sm:p-6 rounded-md bg-slate-900 flex flex-col justify-between shadow-xl">
             <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-800/40">
-              <h2 className="text-sm font-bold text-slate-100">Recent Transactions</h2>
+              <h2 className="text-sm font-bold text-slate-100">Recent Personal Transactions</h2>
               <button
                 onClick={() => navigate("/my-expenses")}
                 className="text-xs text-violet-400 hover:text-violet-300 font-semibold flex items-center gap-1 cursor-pointer transition-colors"
@@ -523,6 +626,7 @@ const Dashboard = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5">
               {[
+                { label: "Split Shared Expense", desc: "Equal / custom multi-payer split", icon: Users, route: "/split-expenses", color: "text-indigo-400 bg-indigo-500/10" },
                 { label: "Log New Expense", desc: "Add cash/card transaction", icon: PlusCircle, route: "/add-expenses", color: "text-violet-400 bg-violet-500/10" },
                 { label: "Track Income", desc: "Record salary/freelance", icon: TrendingUp, route: "/income", color: "text-emerald-400 bg-emerald-500/10" },
                 { label: "Analytics Hub", desc: "View category distributions", icon: BarChart3, route: "/analytics", color: "text-indigo-400 bg-indigo-500/10" },

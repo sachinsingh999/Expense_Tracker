@@ -9,6 +9,16 @@ export const ExpenseProvider = ({ children }) => {
   const { token } = useAuth();
   const [expenses, setExpenses] = useState([]);
   const [income, setIncome] = useState([]);
+  const [splitExpenses, setSplitExpenses] = useState([]);
+  const [splitSummary, setSplitSummary] = useState({
+    totalPaid: 0,
+    totalOwedToYou: 0,
+    totalYouOwe: 0,
+    pendingCount: 0,
+    pendingSettlements: [],
+    recentSharedExpenses: [],
+  });
+  const [registeredUsers, setRegisteredUsers] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const authHeaders = () => ({
@@ -73,6 +83,74 @@ export const ExpenseProvider = ({ children }) => {
     setIncome((prev) => prev.filter((i) => i._id !== id));
   };
 
+  // ─── SPLIT EXPENSES ────────────────────────────────────────
+  const fetchSplitExpenses = useCallback(async () => {
+    if (!token) return;
+    try {
+      setLoading(true);
+      const { data } = await axios.get(`${API}/split-expenses`, authHeaders());
+      setSplitExpenses(data);
+    } catch (err) {
+      console.error("Fetch split expenses error:", err.message);
+    } finally {
+      setLoading(false);
+    }
+  }, [token]);
+
+  const fetchSplitSummary = useCallback(async () => {
+    if (!token) return;
+    try {
+      const { data } = await axios.get(`${API}/split-expenses/summary`, authHeaders());
+      setSplitSummary(data);
+    } catch (err) {
+      console.error("Fetch split summary error:", err.message);
+    }
+  }, [token]);
+
+  const fetchRegisteredUsers = useCallback(async () => {
+    if (!token) return;
+    try {
+      const { data } = await axios.get(`${API}/auth/users`, authHeaders());
+      setRegisteredUsers(data);
+    } catch (err) {
+      console.error("Fetch registered users error:", err.message);
+    }
+  }, [token]);
+
+  const addSplitExpense = async (splitData) => {
+    const { data } = await axios.post(`${API}/split-expenses`, splitData, authHeaders());
+    setSplitExpenses((prev) => [data, ...prev]);
+    fetchSplitSummary();
+    fetchExpenses();
+    return data;
+  };
+
+  const updateSplitExpense = async (id, splitData) => {
+    const { data } = await axios.put(`${API}/split-expenses/${id}`, splitData, authHeaders());
+    setSplitExpenses((prev) => prev.map((e) => (e._id === id ? data : e)));
+    fetchSplitSummary();
+    fetchExpenses();
+    return data;
+  };
+
+  const deleteSplitExpense = async (id) => {
+    await axios.delete(`${API}/split-expenses/${id}`, authHeaders());
+    setSplitExpenses((prev) => prev.filter((e) => e._id !== id));
+    fetchSplitSummary();
+    fetchExpenses();
+  };
+
+  const updateSettlementStatus = async (expenseId, settlementId, status) => {
+    const { data } = await axios.patch(
+      `${API}/split-expenses/${expenseId}/settlements/${settlementId}`,
+      { status },
+      authHeaders()
+    );
+    setSplitExpenses((prev) => prev.map((e) => (e._id === expenseId ? data : e)));
+    fetchSplitSummary();
+    return data;
+  };
+
   // ─── COMPUTED ────────────────────────────────────────────────
   const totalExpenses = expenses.reduce((s, e) => s + e.amount, 0);
   const totalIncome = income.reduce((s, i) => s + i.amount, 0);
@@ -92,6 +170,9 @@ export const ExpenseProvider = ({ children }) => {
       value={{
         expenses,
         income,
+        splitExpenses,
+        splitSummary,
+        registeredUsers,
         loading,
         fetchExpenses,
         addExpense,
@@ -100,6 +181,13 @@ export const ExpenseProvider = ({ children }) => {
         fetchIncome,
         addIncome,
         deleteIncome,
+        fetchSplitExpenses,
+        fetchSplitSummary,
+        fetchRegisteredUsers,
+        addSplitExpense,
+        updateSplitExpense,
+        deleteSplitExpense,
+        updateSettlementStatus,
         totalExpenses,
         totalIncome,
         netSavings,

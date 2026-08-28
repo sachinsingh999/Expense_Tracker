@@ -56,6 +56,11 @@ const expenseSchema = new mongoose.Schema(
       enum: ["daily", "weekly", "monthly", "yearly", ""],
       default: "",
     },
+    splitExpenseId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "SplitExpense",
+      default: null,
+    },
   },
   {
     timestamps: true,
